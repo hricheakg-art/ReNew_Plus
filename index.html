@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Chat Interface</title>
+    <title>Whatsapp-Testing</title>
     <style>
         * {
             margin: 0;
@@ -503,8 +503,8 @@
         
         <div class="messages-container" id="messagesContainer">
             <div class="message other">
-                <div class="message-content">Hello! How can I help you today?</div>
-                <div class="message-time">10:30 AM</div>
+                <div class="message-content">Hello! I am your Ai Assistant from Renew Plus, How can I help you today?</div>
+               <div class="message-time" id="messageTime"></div>
             </div>
             
             <div class="typing-indicator" id="typingIndicator">
@@ -707,6 +707,24 @@
         
         // Initialize
         messageInput.focus();
+
+  // function to get current time in HH:MM AM/PM format
+  function getCurrentTime() {
+    const now = new Date();
+    let hours = now.getHours();
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const ampm = hours >= 12 ? "PM" : "AM";
+    hours = hours % 12 || 12; // convert 0 -> 12
+    return `${hours}:${minutes} ${ampm}`;
+  }
+
+  // update the message time dynamically
+  document.addEventListener("DOMContentLoaded", () => {
+    const timeEl = document.getElementById("messageTime");
+    if (timeEl) {
+      timeEl.textContent = getCurrentTime();
+    }
+  });
     </script>
 </body>
 </html>
